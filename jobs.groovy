@@ -22,11 +22,29 @@ job ("MNTLAB-mzubov-main-build-job") {
         }
     }
 
+    steps {
+        downstreamParameterized {
+            trigger('$Next_job') {
+                block {
+                    buildStepFailure('FAILURE')
+                    failure('FAILURE')
+                    unstable('UNSTABLE')
+                }
+                parameters {
+                    predefinedProp('BRANCH_NAME', '$BRANCH_NAME')
+                }
+            }
+        }
+    }
 }
 
 
 
 for (i in (1..4)) {
     job("MNTLAB-mzubov-child${i}-build-job") {
+
+        parameters {
+            stringParam('BRANCH_NAME')
+        }
     }
 }

@@ -56,6 +56,9 @@ for (i in (1..4)) {
             }
         }
         
+        wrappers {
+            preBuildCleanup()
+        }
         
         steps {
             shell('''bash script.sh > output.txt

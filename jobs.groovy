@@ -1,4 +1,5 @@
 def giturl = 'https://github.com/max-zubov/d323dsl'
+
 job ("MNTLAB-mzubov-main-build-job") {
 
     parameters {
